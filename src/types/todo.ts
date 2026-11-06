@@ -24,19 +24,23 @@ export type TodoContextValue = {
 //Dispatch<...>, a function that takes something and returns nothing
 //dispatch takes action (TodoReducerAction)
     dispatch: Dispatch<TodoReducerAction>;
+    filter: Filter;
+    setFilter: (filter: Filter) => void
 } 
 
-export interface TodoItemProps{
-    todo: Todo;
-}
+// export interface TodoItemProps{
+//     todo: Todo;
+// }
 
-export interface TodoListProps{
-    todos: Todo[]
-}
+// export interface TodoListProps{
+//     todos: Todo[]
+// }
 
 
-export type TodoReducerAction = { 
-    type: "toggle"; id: string } | 
+export type TodoReducerAction = 
+    {type: "toggle"; id: string } | 
     {type: "addTodo"; text: string} | 
     {type: "delete", id: string} |
     {type: "edit", id: string, text: string}
+
+
