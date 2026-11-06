@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { Todo, TodoReducerAction } from "../types/todo";
+import type { Filter, Todo, TodoReducerAction } from "../types/todo";
 
 type SetText = Dispatch<SetStateAction<string>>;
 type SetEditing = Dispatch<SetStateAction<boolean>>;
@@ -33,4 +33,16 @@ export function cancelEdit(
 ) {
   setNewText(text);
   setIsEditing(false);
+}
+
+
+export function filterTodos(todos: Todo[], filter: Filter){
+  switch (filter){
+    case "active":
+    return todos.filter(todo => !todo.completed)
+    case "completed":
+      return todos.filter(todo => todo.completed)
+    default:
+      return todos
+  }
 }

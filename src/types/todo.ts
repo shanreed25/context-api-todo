@@ -1,5 +1,8 @@
 import type { Dispatch, SetStateAction } from "react";
 
+export type Filter = "all" | "active" | "completed"
+
+
 //describes one todo item
 export interface Todo {
     id: string;
