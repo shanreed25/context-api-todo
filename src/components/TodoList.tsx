@@ -1,9 +1,10 @@
-import type { TodoListProps } from "../types/todo";
-
+import { useTodos } from "../context/TodoContext"
 import TodoItem from "./TodoItem";
 
-export default function TodoList() {
 
+export default function TodoList() {
+    const { todos } = useTodos();
+    
     return (
         <ul className="w-lg border">
             {todos.map((todo) => (
