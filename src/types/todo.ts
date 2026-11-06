@@ -23,3 +23,5 @@ export interface TodoListProps{
     todos: Todo[]
 }
 
+
+export type TodoAction = { type: "toggle"; id: string };
