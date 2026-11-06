@@ -26,7 +26,9 @@ export default function TodoItem({ todo }: TodoItemProps) {
       </div>
       <div className="flex items-center gap-5">
         <PencilSquareIcon className="size-7" />
-        <TrashIcon className="size-7" />
+        <button type="button" onClick={() => dispatch({type: "delete", id: todo.id})}>
+          <TrashIcon className="size-7" />
+        </button>
       </div>
     </li>
   );

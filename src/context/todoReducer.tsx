@@ -6,6 +6,8 @@ export function todoReducer(todos: Todo[], action: TodoReducerAction): Todo[] {
             return todos.map(todo => todo.id === action.id ? {...todo, completed: !todo.completed} : todo)
         case "addTodo":
             return [...todos, {id: crypto.randomUUID(), text: action.text, completed: false}]
+        case "delete":
+            return todos.filter(todo => todo.id !== action.id)
         default:
             return todos
     }
