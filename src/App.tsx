@@ -5,6 +5,7 @@ import type { Todo } from "./types/todo";
 
 import { styles } from "./styles/styles"
 import { TodoContext } from "./context/TodoContext";
+import TodoInput from "./components/TodoInput";
 
 
 
@@ -20,7 +21,9 @@ function App() {
         <h1 className="text-5xl">Todo App (Context API)</h1>
       </header>
       <TodoContext.Provider value={{todos, setTodos}}>
+        <TodoInput />
         <TodoList />
+
       </TodoContext.Provider>
 
     </div>

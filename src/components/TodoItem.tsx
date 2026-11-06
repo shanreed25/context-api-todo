@@ -17,9 +17,9 @@ export default function TodoItem({ todo }: TodoItemProps) {
   }
 
   return (
-    <li className="flex justify-between">
+    <li className={styles.todoListItem}>
       {/* <p>{todo.id}</p> */}
-      <div className="flex">
+      <div className="flex items-center gap-5">
         <label className="relative flex items-center gap-2 cursor-pointer">
           <input 
           type="checkbox" 
@@ -31,7 +31,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
         </label>
         <p>{todo.text}</p>
       </div>
-      <div className="w-20 flex justify-between">
+      <div className="flex items-center gap-5">
         <PencilSquareIcon className="size-7" />
         <TrashIcon className="size-7" />
       </div>
