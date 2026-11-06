@@ -32,4 +32,8 @@ export interface TodoListProps{
 }
 
 
-export type TodoReducerAction = { type: "toggle"; id: string } | {type: "addTodo"; text: string} | {type: "delete", id: string};
+export type TodoReducerAction = { 
+    type: "toggle"; id: string } | 
+    {type: "addTodo"; text: string} | 
+    {type: "delete", id: string} |
+    {type: "edit", id: string, text: string}

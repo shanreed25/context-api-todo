@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTodos } from "../context/TodoContext";
 import { styles } from "../styles/styles";
 import type { TodoItemProps } from "../types/todo";
@@ -6,9 +7,13 @@ import {
   TrashIcon,
   CheckIcon,
 } from "@heroicons/react/24/solid";
+import { editTodo, saveNewText, cancelEdit } from "../utils/todoUtils";
+
 
 export default function TodoItem({ todo }: TodoItemProps) {
-  const { dispatch } = useTodos();
+  const { dispatch } = useTodos()
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [newText, setNewText] = useState<string>(todo.text)
 
   return (
     <li className={styles.todoListItem}>
