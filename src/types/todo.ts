@@ -10,9 +10,17 @@ export interface Todo {
 //describes what goes in the context
 export type TodoContextValue = {
     todos: Todo[];
-    //useState<Todo[]> hands back Dispatch<SetStateAction<Todo[]>>
-    //Dispatch and SetStateAction come from React's type definitions
-    setTodos: Dispatch<SetStateAction<Todo[]>>;
+    // //useState<Todo[]> hands back Dispatch<SetStateAction<Todo[]>>
+    // //Dispatch<...>, a function that takes something and returns nothing
+    // //Dispatch and SetStateAction come from React's type definitions
+    // //setTodos takes state (SetStateAction<Todo[]>)
+    // setTodos: Dispatch<SetStateAction<Todo[]>>;
+
+//with useReducer, the context holds a different function
+//useReducer(todoReducer, ...) hands bac a action object, like { type: "toggle", id: "..." }
+//Dispatch<...>, a function that takes something and returns nothing
+//dispatch takes action (TodoReducerAction)
+    dispatch: Dispatch<TodoReducerAction>;
 } 
 
 export interface TodoItemProps{
@@ -24,4 +32,4 @@ export interface TodoListProps{
 }
 
 
-export type TodoAction = { type: "toggle"; id: string };
+export type TodoReducerAction = { type: "toggle"; id: string };

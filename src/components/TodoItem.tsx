@@ -8,13 +8,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 export default function TodoItem({ todo }: TodoItemProps) {
-  const { setTodos } = useTodos();
-
-
-  function handleCheckBox(){
-    setTodos(prev => prev.map(p => (p.id === todo.id ? {...p, completed: !p.completed} : p))
-  )
-  }
+  const { dispatch } = useTodos();
 
   return (
     <li className={styles.todoListItem}>
@@ -25,7 +19,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           type="checkbox" 
           className={styles.checkCircleInput}
           checked={todo.completed}
-          onChange={handleCheckBox}
+          onChange={() => dispatch({ type: "toggle", id: todo.id })}
            />
           <CheckIcon className={styles.checkIcon} />
         </label>

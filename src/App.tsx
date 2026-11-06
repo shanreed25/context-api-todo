@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { mockTodos } from "./data/mockTodos";
-import type { Todo } from "./types/todo";
+import { todoReducer } from "./context/todoReducer";
 import { styles } from "./styles/styles"
 import { TodoContext } from "./context/TodoContext";
 import TodoInput from "./components/TodoInput";
@@ -11,7 +11,7 @@ import TodoFilter from "./components/TodoFilter";
 
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>(mockTodos)
+  const [todos, dispatch] = useReducer(todoReducer, mockTodos);
 
 
   return (
@@ -23,7 +23,7 @@ function App() {
           <button className={styles.modeBtn}>🌞 Switch to Light</button>
         </div>
       </header>
-      <TodoContext.Provider value={{todos, setTodos}}>
+      <TodoContext.Provider value={{todos, dispatch}}>
         <TodoInput />
         <TodoFilter />
         <TodoList />
