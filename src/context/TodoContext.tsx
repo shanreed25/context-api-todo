@@ -13,7 +13,7 @@ export function useTodos(): TodoContextValue {
   const context = useContext(TodoContext);
 
   if (context === undefined) {
-    throw new Error("useTodos must be used inside TodoContext.Provider");
+    throw new Error("useTodos must be used inside of the TodoContext.Provider");
   }
 
   return context; // TypeScript now knows this is TodoContextType, not undefined

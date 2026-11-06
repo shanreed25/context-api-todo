@@ -23,16 +23,16 @@
 
 ## Status
 ### Core Todo Management (TodoContext)
-- [ ] **State:** An array of todo items. Each todo item should have at least:
+- [X] **State:** An array of todo items. Each todo item should have at least:
     - [X] **`id:`** A unique identifier (string or number).
     - [X] **`text:`** The content of the todo (string).
     - [X] **`completed:`** A boolean indicating if the todo is completed.
-- [ ] **Actions (exposed via context):**
+- [X] **Actions (exposed via context):**
     - [X] **`addTodo(text: string):`** Adds a new todo item to the list.
     - [X] **`toggleTodo(id: string | number):`** Toggles the completed status of a todo item.
     - [X] **`deleteTodo(id: string | number):`** Removes a todo item from the list.
     - [X] **`editTodo(id: string | number, newText: string):`** Edits the text of an existing todo item.
-    - [ ] **`clearCompleted():`** Removes all completed todos.
+    - [X] **`clearCompleted():`** Removes all completed todos.
 - [X] **Components:**
     - [X] **`TodoInput:`** An input field to add new todos.
     - [X] **`TodoList:`** Displays the list of todo items.
@@ -40,7 +40,22 @@
 ### Visibility Filters (FilterContext)
 - [X] **State:** The current visibility filter. Possible values: ‘all’, ‘active’, ‘completed’.
 - [X] **Actions** (exposed via context):
-    - [ ] **`setFilter(filter: string):`** Sets the current filter.
+    - [X] **`setFilter(filter: string):`** Sets the current filter.
 - [X] **Functionality:**
     - [X] The TodoList should display todos based on the currently active filter from FilterContext.
     - [X] FilterButtons: A component that displays buttons to change the current filter.
+
+
+### Theme Switching (ThemeContext)
+- [X] **State:** The current theme. Possible values: ‘light’, ‘dark’.
+- [X] **Actions (exposed via context):**
+    - [X] **`toggleTheme():`** Switches between ‘light’ and ‘dark’ themes.
+- [X] **Functionality:**
+    - [X] The application should visually change based on the selected theme (e.g., background colors, text colors). Apply theme changes to the main app container and ideally a few key components.
+    - [X] ThemeToggleButton: A button to toggle the theme.
+
+### Persistence Layer
+- **Functionality:**
+    - [ ] The state of the todos (from TodoContext) and the current theme (from ThemeContext) should be persisted to localStorage.
+    - [ ] When the application loads, it should attempt to rehydrate these states from localStorage.
+    - [ ] Updates to todos or theme should automatically update localStorage.
