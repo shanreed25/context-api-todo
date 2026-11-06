@@ -1,4 +1,5 @@
 import { useTodos } from "../context/TodoContext";
+import { styles } from "../styles/styles";
 import type { Filter } from "../types/todo"
 
 
@@ -9,14 +10,15 @@ const FILTERS: { value: Filter; label: string }[] = [
 ]
 
 export default function TodoFilter(){
-  const {setFilter} = useTodos()
+  const {filter, setFilter} = useTodos()
 
     return (
-        <div>
+        <div className="flex justify-center gap-3">
       {FILTERS.map(({ value, label }) => (
         <button
           key={value}
           onClick={() => setFilter(value)}
+          className={`${styles.filterBtns} ${filter === value ? styles.activeFilterBtn : styles.inactiveFilterBtn}`}
         >
           {label}
         </button>

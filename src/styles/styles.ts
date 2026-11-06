@@ -9,4 +9,7 @@ export const styles = {
     addTodoBtn: "bg-blue-600 hover:bg-blue-500 text-white font-medium px-5 py-2 rounded-md transition-colors",
     checkCircleInput: "peer appearance-none h-5 w-5 rounded-full border-2 border-gray-400 checked:bg-purple-700 checked:border-purple-700 cursor-pointer",
     checkIcon: "absolute left-1 h-3 w-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none",
+    filterBtns: "rounded border text-white cursor-pointer py-2 px-4",
+    inactiveFilterBtn: "bg-neutral-700 border-neutral-600 hover:bg-neutral-600",
+    activeFilterBtn: "font-bold border-blue-600 bg-blue-600",
 }
