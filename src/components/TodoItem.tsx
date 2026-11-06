@@ -27,10 +27,25 @@ export default function TodoItem({ todo }: TodoItemProps) {
            />
           <CheckIcon className={styles.checkIcon} />
         </label>
-        <p>{todo.text}</p>
+
+        {isEditing ? (
+          <input 
+          value={newText} 
+          onChange={e => setNewText(e.target.value)}
+          className={styles.todoInput}
+          autoFocus
+           /> )
+           :
+           ( <p>{todo.text}</p>
+        )}
+
+
+        
       </div>
       <div className="flex items-center gap-5">
+       <button type="button" onClick={() =>editTodo(todo.text, setNewText, setIsEditing)}> 
         <PencilSquareIcon className="size-7" />
+        </button>
         <button type="button" onClick={() => dispatch({type: "delete", id: todo.id})}>
           <TrashIcon className="size-7" />
         </button>
