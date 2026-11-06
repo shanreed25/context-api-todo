@@ -11,6 +11,11 @@ export default function TodoItem({ todo }: TodoItemProps) {
   const { setTodos } = useTodos();
 
 
+  function handleCheckBox(){
+    setTodos(prev => prev.map(p => (p.id === todo.id ? {...p, completed: !p.completed} : p))
+  )
+  }
+
   return (
     <li className="flex justify-between">
       {/* <p>{todo.id}</p> */}
@@ -19,6 +24,8 @@ export default function TodoItem({ todo }: TodoItemProps) {
           <input 
           type="checkbox" 
           className={styles.checkCircleInput}
+          checked={todo.completed}
+          onChange={handleCheckBox}
            />
           <CheckIcon className={styles.checkIcon} />
         </label>

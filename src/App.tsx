@@ -20,7 +20,7 @@ function App() {
         <h1 className="text-5xl">Todo App (Context API)</h1>
       </header>
       <TodoContext.Provider value={{todos, setTodos}}>
-              <TodoList />
+        <TodoList />
       </TodoContext.Provider>
 
     </div>
