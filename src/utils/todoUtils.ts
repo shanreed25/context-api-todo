@@ -22,7 +22,7 @@ export function saveNewText(
   const trimmed = newText.trim();
   if (trimmed === "") return;
 
-  dispatch({ type: "edit", id: todo.id, text: trimmed });
+  dispatch({ type: "editTodo", id: todo.id, text: trimmed });
   setIsEditing(false);
 }
 
@@ -47,4 +47,8 @@ export function filterTodos(todos: Todo[], filter: Filter){
     default:
       return todos
   }
+}
+
+export function clearCompleted(dispatch: Dispatch<TodoReducerAction>){
+  dispatch({ type: "clearCompleted" });
 }

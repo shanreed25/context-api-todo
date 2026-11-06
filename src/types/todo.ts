@@ -20,7 +20,7 @@ export type TodoContextValue = {
     // setTodos: Dispatch<SetStateAction<Todo[]>>;
 
 //with useReducer, the context holds a different function
-//useReducer(todoReducer, ...) hands bac a action object, like { type: "toggle", id: "..." }
+//useReducer(todoReducer, ...) hands bac a action object, like { type: "toggleTodo", id: "..." }
 //Dispatch<...>, a function that takes something and returns nothing
 //dispatch takes action (TodoReducerAction)
     dispatch: Dispatch<TodoReducerAction>;
@@ -28,9 +28,9 @@ export type TodoContextValue = {
     setFilter: (filter: Filter) => void
 } 
 
-// export interface TodoItemProps{
-//     todo: Todo;
-// }
+export interface TodoItemProps{
+    todo: Todo;
+}
 
 // export interface TodoListProps{
 //     todos: Todo[]
@@ -38,9 +38,10 @@ export type TodoContextValue = {
 
 
 export type TodoReducerAction = 
-    {type: "toggle"; id: string } | 
+    {type: "toggleTodo"; id: string } | 
     {type: "addTodo"; text: string} | 
-    {type: "delete", id: string} |
-    {type: "edit", id: string, text: string}
+    {type: "deleteTodo", id: string} |
+    {type: "editTodo", id: string, text: string} |
+    {type: "clearCompleted"}
 
 

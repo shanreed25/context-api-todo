@@ -24,7 +24,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           type="checkbox" 
           className={styles.checkCircleInput}
           checked={todo.completed}
-          onChange={() => dispatch({ type: "toggle", id: todo.id })}
+          onChange={() => dispatch({ type: "toggleTodo", id: todo.id })}
            />
           <CheckIcon className={styles.checkIcon} />
         </label>
@@ -60,7 +60,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 
 
 
-        <button type="button" onClick={() => dispatch({type: "delete", id: todo.id})}>
+        <button type="button" onClick={() => dispatch({type: "deleteTodo", id: todo.id})}>
           <TrashIcon className="size-7 text-red-500" />
         </button>
       </div>
