@@ -1,8 +1,10 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react";
 import { styles } from "../styles/styles";
+import { useTodos } from "../context/TodoContext";
 
 export default function TodoInput() {
-    const [inputText, setInputText] = useState("")
+    const [inputText, setInputText] = useState<string>("")
+    const {dispatch} = useTodos()
 
 
     function handleChange(e: ChangeEvent<HTMLInputElement>){
@@ -11,6 +13,11 @@ export default function TodoInput() {
 
     function handleSubmit(e: SubmitEvent<HTMLFormElement>){
         e.preventDefault()
+
+        if (inputText.trim() === ""){
+          return
+        }
+        dispatch({type: "addTodo", text: inputText.trim() })
         setInputText("")
     }
   return (

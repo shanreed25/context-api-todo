@@ -12,7 +12,6 @@ export default function TodoItem({ todo }: TodoItemProps) {
 
   return (
     <li className={styles.todoListItem}>
-      {/* <p>{todo.id}</p> */}
       <div className="flex items-center gap-5">
         <label className="relative flex items-center gap-2 cursor-pointer">
           <input 
@@ -29,7 +28,6 @@ export default function TodoItem({ todo }: TodoItemProps) {
         <PencilSquareIcon className="size-7" />
         <TrashIcon className="size-7" />
       </div>
-      {/* {todo.completed ? <p>Done</p> : <p>Not Completed</p> } */}
     </li>
   );
 }

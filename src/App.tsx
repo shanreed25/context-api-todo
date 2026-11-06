@@ -7,12 +7,8 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList"
 import TodoFilter from "./components/TodoFilter";
 
-
-
-
 function App() {
   const [todos, dispatch] = useReducer(todoReducer, mockTodos);
-
 
   return (
     <div className={styles.app}>
