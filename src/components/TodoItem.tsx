@@ -8,6 +8,7 @@ import {
   CheckIcon,
 } from "@heroicons/react/24/solid";
 import { editTodo, saveNewText, cancelEdit } from "../utils/todoUtils";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 
 export default function TodoItem({ todo }: TodoItemProps) {
@@ -38,16 +39,29 @@ export default function TodoItem({ todo }: TodoItemProps) {
            :
            ( <p>{todo.text}</p>
         )}
-
-
-        
       </div>
+
+
       <div className="flex items-center gap-5">
+        {isEditing ? (
+          <>
+          <button type="button" onClick={() => saveNewText(todo, newText, dispatch, setIsEditing)} aria-label="Save edit">
+              <CheckIcon className="size-7 text-green-600" />
+            </button>
+            <button type="button" onClick={() => cancelEdit(todo.text, setNewText, setIsEditing)} aria-label="Cancel edit">
+              <XMarkIcon className="size-7 text-red-600" />
+            </button>
+          </>
+        ) : (
        <button type="button" onClick={() =>editTodo(todo.text, setNewText, setIsEditing)}> 
-        <PencilSquareIcon className="size-7" />
+        <PencilSquareIcon className="size-7 text-blue-600" />
         </button>
+        )}
+
+
+
         <button type="button" onClick={() => dispatch({type: "delete", id: todo.id})}>
-          <TrashIcon className="size-7" />
+          <TrashIcon className="size-7 text-red-500" />
         </button>
       </div>
     </li>
