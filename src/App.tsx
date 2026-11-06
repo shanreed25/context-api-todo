@@ -1,11 +1,16 @@
+import { useState } from "react";
 import TodoList from "./components/TodoList"
-
+import { mockTodos } from "./data/mockTodos";
+import type { Todo } from "./types/todo";
 
 import { styles } from "./styles/styles"
+import { TodoContext } from "./context/TodoContext";
+
 
 
 
 function App() {
+  const [todos, setTodos] = useState<Todo[]>(mockTodos)
 
 
   return (
@@ -14,7 +19,10 @@ function App() {
       <header>
         <h1 className="text-5xl">Todo App (Context API)</h1>
       </header>
-      <TodoList/>
+      <TodoContext.Provider value={{todos, setTodos}}>
+              <TodoList />
+      </TodoContext.Provider>
+
     </div>
   )
 }
