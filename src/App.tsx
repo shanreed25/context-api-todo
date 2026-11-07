@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { mockTodos } from "./data/mockTodos";
 import { todoReducer } from "./context/todoReducer";
 import { styles } from "./styles/styles"
@@ -6,13 +6,22 @@ import { TodoContext } from "./context/TodoContext";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList"
 import TodoFilter from "./components/TodoFilter";
-import type { Theme, Filter } from "./types/todo";
+import type { Theme, Filter, Todo } from "./types/todo";
 import { ThemeContext } from "./context/ThemeContext";
+import { loadLocalStorage, saveToLocalStorage } from "./utils/storage";
 
 function App() {
-  const [todos, dispatch] = useReducer(todoReducer, mockTodos);
+  const [todos, dispatch] = useReducer(todoReducer, mockTodos, fallback => loadLocalStorage<Todo[]>("todos", fallback));
   const [filter, setFilter] = useState<Filter>("all")
-  const [theme, setTheme] = useState<Theme>("dark")
+  const [theme, setTheme] = useState<Theme>(() => loadLocalStorage<Theme>("theme", "dark"))
+
+  useEffect(() => {
+    saveToLocalStorage("todos", todos)
+  }, [todos])
+
+  useEffect(() => {
+    saveToLocalStorage("theme", theme);
+  }, [theme]);
 
   function toggleTheme(){
     setTheme(prev => ((prev) === "light" ? "dark" : "light"));

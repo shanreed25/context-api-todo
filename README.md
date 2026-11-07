@@ -7,19 +7,21 @@
 - ThemeContext, which is saved to localStorage and restored when the app loads, owns light or dark mode
 
 
-| File                | Purpose                                              | TypeScript feature used                                          |
-|---------------------|------------------------------------------------------|------------------------------------------------------------------|
-| `types.ts`          | Shapes of the data                                   | `type Todo`, `type TodoContextType`                              |
-| `TodoContext.ts`    | The context box and a safe hook                      | `createContext<TodoContextType \| undefined>`, `useTodos()`      |
-| `App.tsx`           | Owns the state, wraps the app in the Provider        | `useState<Todo[]>`                                               |
-| `TodoList.tsx`      | Reads `todos` and maps them                          | Inferred `Todo` inside `.map`                                    |
-| `TodoItem.tsx`      | Shows one todo with a checkbox                       | `type TodoItemProps`                                             |
-| `styles.ts`         | To cut down on style code in the components          | Styles objects                                                   |
-| `mockTodos.ts`      | The starting list of todos                           | Array literal checked against `Todo[]` by `useReducer`           |
-| `todoReducer.tsx`   | Handles toggle, add, delete, and edit actions        | `(todos: Todo[], action: TodoReducerAction): Todo[]`             |
-| `todoUtils.ts`      | Helpers for editing todos and filtering the list     | `Dispatch<SetStateAction<string>>`, `Filter` parameter           |
-| `TodoInput.tsx`     | Form that dispatches `addTodo` with the typed text   | `useState<string>`, `ChangeEvent`, `SubmitEvent`                 |
-| `TodoFilter.tsx`    | Buttons to switch between all, active, and completed | `type Filter`, `{ value: Filter; label: string }[]`              |
+| File                | Purpose                                                                      | TypeScript feature used                                                                           |
+|---------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| `todo.ts`           | Shapes of the data                                                           | `interface Todo`, `type TodoContextValue`, union `TodoReducerAction`, `type Filter`, `type Theme` |
+| `TodoContext.tsx`   | The todo context and a safe hook                                             | `createContext<TodoContextValue \| undefined>`, `useTodos()`                                      |
+| `ThemeContext.tsx`  | The theme context and a safe hook                                            | `createContext<ThemeContextValue \| undefined>`, `useTheme()`                                     |
+| `App.tsx`           | Owns todos, filter, and theme state, wraps the app in both Providers         | `useReducer(todoReducer, ...)`, `useState<Filter>`, `useState<Theme>`                             |
+| `TodoList.tsx`      | Shows the filtered todos, items left, and Clear Completed                    | Inferred `Todo` inside `.map`                                                                     |
+| `TodoItem.tsx`      | Shows one todo with toggle, edit, and delete                                 | `type TodoItemProps`, `useState<boolean>`, `useState<string>`                                     |
+| `styles.ts`         | To cut down on style code in the components                                  | Styles objects                                                                                    |
+| `mockTodos.ts`      | The starting list of todos                                                   | Array literal checked against `Todo[]` by `useReducer`                                            |
+| `todoReducer.tsx`   | Handles toggle, add, delete, edit, and clear completed actions               | `(todos: Todo[], action: TodoReducerAction): Todo[]`                                              |
+| `todoUtils.ts`      | Helpers for editing, filtering, and clearing completed todos                 | `Dispatch<SetStateAction<string>>`, `Filter` parameter                                            |
+| `storage.ts`        | Saves and loads todos and theme in localStorage                              | Generic functions `loadLocalStorage<Data>`, `saveToLocalStorage<Data>`                            |
+| `TodoInput.tsx`     | Form that dispatches `addTodo` with the typed text                           | `useState<string>`, `ChangeEvent`, `SubmitEvent`                                                  |
+| `TodoFilter.tsx`    | Buttons to switch between all, active, and completed                         | `type Filter`, `{ value: Filter; label: string }[]`                                               |
 
 ## Status
 ### Core Todo Management (TodoContext)
@@ -56,6 +58,6 @@
 
 ### Persistence Layer
 - **Functionality:**
-    - [ ] The state of the todos (from TodoContext) and the current theme (from ThemeContext) should be persisted to localStorage.
-    - [ ] When the application loads, it should attempt to rehydrate these states from localStorage.
-    - [ ] Updates to todos or theme should automatically update localStorage.
+    - [X] The state of the todos (from TodoContext) and the current theme (from ThemeContext) should be persisted to localStorage.
+    - [X] When the application loads, it should attempt to rehydrate these states from localStorage.
+    - [X] Updates to todos or theme should automatically update localStorage.

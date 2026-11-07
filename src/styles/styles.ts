@@ -3,7 +3,7 @@ export const styles = {
   header: "w-full border-b shadow-md border-fuchsia-300 bg-white dark:border-neutral-700 dark:bg-neutral-900",
   headerContentConatiner: "flex items-center justify-between px-6 py-4",
   headerH1: "text-5xl font-bold text-fuchsia-900 dark:text-white",
-  modeBtn: "flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-neutral-900 font-semibold px-4 py-2 rounded-lg shadow transition-colors",
+  modeBtn: "flex items-center gap-2 bg-yellow-600 hover:bg-yellow-300 dark:bg-yellow-400 dark:hover:bg-yellow-300 text-neutral-900 font-semibold px-4 py-2 rounded-lg shadow transition-colors",
   todoListItem: "flex justify-between items-center gap-4 rounded-lg px-4 py-3 shadow-md transition-colors border bg-white border-fuchsia-200 hover:bg-fuchsia-50 dark:bg-neutral-800 dark:border-neutral-700 dark:hover:bg-neutral-700",
   todoInput: "flex-1 rounded-md px-4 py-2 border focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-white border-fuchsia-300 text-neutral-900 placeholder-neutral-400 dark:bg-neutral-800 dark:border-neutral-600 dark:text-white dark:placeholder-neutral-500",
   addTodoBtn: "bg-blue-600 hover:bg-blue-500 text-white font-medium px-5 py-2 rounded-md transition-colors",
